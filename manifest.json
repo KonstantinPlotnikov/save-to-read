@@ -35,10 +35,7 @@
     },
 
     "page_action": {
-        "browser_style": true,
-        "default_icon": "icons/add.png",
-        "default_title": "Toogle page save-to-read status",
-        "show_matches": ["http://*/", "https://*/"]
+        "default_icon": "icons/add.png"
     },
 
     "background": {
