@@ -18,7 +18,19 @@ onFolderChanged();
 // --------------------------------------------------------------------------
 // FUNCTIONS
 
+function checkTab(tab) {
+    let validator = new RegExp('^(http:\/\/|https:\/\/|ftp:\/\/)');
+    if (!validator.test(tab.url)) {
+        // browser.pageAction.hide(tab.id);
+        return false;
+    }
+    return true;
+}
+
 function toggleBookmark(tab) {
+    if (!checkTab(tab)) {
+        return;
+    }
     bookmarks.exists(tab.url)
         .then((bookmarkExist) => {
             if (bookmarkExist)
@@ -36,6 +48,9 @@ function setPageAction(tabId, bookmarkExist) {
 }
 
 function onTabUpdated(tabId, changeInfo, tab) {
+    if (!checkTab(tab)) {
+        return;
+    }
     bookmarks.exists(tab.url)
         .then((bookmarkExist) => {
             setPageAction(tabId, bookmarkExist);
@@ -51,6 +66,9 @@ function onBookmarkChanged(details) {
         .then((tabs) => {
             for (let index in tabs) {
                 let tab = tabs[index];
+                if (!checkTab(tab)) {
+                    continue;
+                }
                 if (tab.url == details.url) {
                     setPageAction(tab.id, details.exists);
                 }
@@ -68,6 +86,9 @@ function onFolderChanged() {
                 urls.add(bookmark.url);
             })
             tabs.forEach((tab) => {
+                if (!checkTab(tab)) {
+                    return;
+                }
                 setPageAction(tab.id, urls.has(tab.url));
             })
         })
