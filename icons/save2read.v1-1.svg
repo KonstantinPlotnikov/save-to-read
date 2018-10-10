@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   preserveAspectRatio="xMidYMid meet"
+   viewBox="0 0 32 32"
+   width="32"
+   height="32"
+   id="svg5941"
+   sodipodi:docname="save2read.v1-1.svg"
+   inkscape:export-filename="/home/kostya/code/save-to-read/icons/save2read.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="0.92.2 2405546, 2018-03-11">
+  <metadata
+     id="metadata5945">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1007"
+     id="namedview5943"
+     showgrid="false"
+     inkscape:zoom="2"
+     inkscape:cx="-179.6307"
+     inkscape:cy="-48.954775"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg5941">
+    <inkscape:grid
+       type="xygrid"
+       id="grid5947" />
+  </sodipodi:namedview>
+  <defs
+     id="defs5833">
+    <path
+       d=""
+       id="d2rBH7VLU0" />
+    <path
+       d="M13 5C13.65 5.21 14.05 5.34 14.21 5.39C15.45 5.79 16.78 5.77 18.01 5.34C18.14 5.3 18.47 5.18 19 5L31 5L31 30L19 30C18.39 30.2 18 30.32 17.85 30.37C16.58 30.78 15.22 30.77 13.96 30.33C13.83 30.29 13.51 30.18 13 30L1 30L1 5L13 5Z"
+       id="b1kdQeKhGU" />
+    <path
+       d="M16 5C16.81 4.79 17.32 4.65 17.53 4.6C21.51 3.55 25.7 3.65 29.63 4.88C29.68 4.9 29.8 4.94 30 5L30.06 29.01C30.06 29.01 30.06 29.01 30.06 29.01C26.06 28.34 21.97 28.51 18.04 29.49C17.63 29.59 17.69 29.58 16.11 29.97C16.05 29.99 16 29.94 16 29.88C16 26.57 16 18.27 16 5Z"
+       id="b3T7PjEKU1" />
+    <path
+       d="M16 3.6C16.73 3.38 17.19 3.24 17.37 3.18C20.73 2.15 24.32 2.17 27.67 3.23C27.83 3.28 28.22 3.4 28.85 3.6L28.81 28C28.37 27.9 28.09 27.83 27.98 27.8C24.63 27.02 21.13 27.2 17.89 28.34C17.63 28.43 17.01 28.65 16 29L16 3.6Z"
+       id="aJS8I8lik" />
+    <path
+       d=""
+       id="dEnr7Ib5" />
+    <path
+       d="M30.13 4.95L28.97 3.56"
+       id="a1Di7COTx" />
+    <path
+       d="M29.5 4.85L29.5 28.5L28.5 28.26L22.86 28L16.14 29.65"
+       id="c25KXso66x" />
+    <path
+       d=""
+       id="daLUcrFaA" />
+    <path
+       d="M26.18 2.75L26.18 23.16L22.55 19.48L18.87 23.16L18.87 2.75L26.18 2.75Z"
+       id="a7N6ftNYa" />
+    <path
+       d="M22.63 2.75L26.23 2.75L26.31 23.42L22.55 19.48L22.63 2.75Z"
+       id="aBDOeOXU2" />
+    <path
+       d="M26.23 23.11L22.55 19.48L18.87 23.11L18.87 2.75L26.23 2.75L26.23 23.11Z"
+       id="aN11dLuCs" />
+    <path
+       d=""
+       id="b3DD9251W4" />
+    <path
+       d="M16 5C15.19 4.79 14.68 4.65 14.47 4.6C10.49 3.55 6.3 3.65 2.37 4.88C2.32 4.9 2.2 4.94 2 5L1.94 29.01C1.94 29.01 1.94 29.01 1.94 29.01C5.94 28.34 10.03 28.51 13.96 29.49C14.37 29.59 14.2 29.55 15.76 29.94C15.88 29.97 16 29.88 16 29.75C16 26.45 16 18.2 16 5Z"
+       id="btN5oA17T" />
+    <path
+       d="M16 3.6C15.27 3.38 14.81 3.24 14.63 3.18C11.27 2.15 7.68 2.17 4.33 3.23C4.17 3.28 3.78 3.4 3.15 3.6L3.19 28C3.63 27.9 3.91 27.83 4.02 27.8C7.37 27.02 10.87 27.2 14.11 28.34C14.37 28.43 14.99 28.65 16 29L16 3.6Z"
+       id="fqMTu4IBs" />
+    <path
+       d="M1.88 4.95L3.03 3.56"
+       id="b4Mo70oDWP" />
+    <path
+       d="M2.5 4.85L2.5 28.5L3.5 28.26L9.14 28L15.86 29.65"
+       id="a1dXA1cSkf" />
+  </defs>
+  <g
+     id="g5939">
+    <g
+       id="g5937">
+      <g
+         id="g5839">
+        <g
+           id="g5837">
+          <use
+             xlink:href="#d2rBH7VLU0"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#892b2b"
+             stroke-width="2"
+             stroke-opacity="1"
+             id="use5835" />
+        </g>
+      </g>
+      <g
+         id="g5847">
+        <use
+           xlink:href="#b1kdQeKhGU"
+           opacity="1"
+           fill="#f2ede1"
+           fill-opacity="1"
+           id="use5841" />
+        <g
+           id="g5845">
+          <use
+             xlink:href="#b1kdQeKhGU"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#232e5c"
+             stroke-width="2"
+             stroke-opacity="1"
+             id="use5843" />
+        </g>
+      </g>
+      <g
+         id="g5855">
+        <use
+           xlink:href="#b3T7PjEKU1"
+           opacity="1"
+           fill="#e7e4db"
+           fill-opacity="1"
+           id="use5849" />
+        <g
+           id="g5853">
+          <use
+             xlink:href="#b3T7PjEKU1"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#cbb18a"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use5851" />
+        </g>
+      </g>
+      <g
+         id="g5863">
+        <use
+           xlink:href="#aJS8I8lik"
+           opacity="1"
+           fill="#e7e4db"
+           fill-opacity="1"
+           id="use5857" />
+        <g
+           id="g5861">
+          <use
+             xlink:href="#aJS8I8lik"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#cbb18a"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use5859" />
+        </g>
+      </g>
+      <g
+         id="g5869">
+        <g
+           id="g5867">
+          <use
+             xlink:href="#dEnr7Ib5"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#89702b"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use5865" />
+        </g>
+      </g>
+      <g
+         id="g5875">
+        <g
+           id="g5873">
+          <use
+             xlink:href="#a1Di7COTx"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#cbb18a"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use5871" />
+        </g>
+      </g>
+      <g
+         id="g5881">
+        <g
+           id="g5879">
+          <use
+             xlink:href="#c25KXso66x"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#cbb18a"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use5877" />
+        </g>
+      </g>
+      <g
+         id="g5887">
+        <g
+           id="g5885">
+          <use
+             xlink:href="#daLUcrFaA"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#2db335"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use5883" />
+        </g>
+      </g>
+      <g
+         id="g5891">
+        <use
+           xlink:href="#a7N6ftNYa"
+           opacity="1"
+           fill="#b32d4b"
+           fill-opacity="1"
+           id="use5889" />
+      </g>
+      <g
+         id="g5895">
+        <use
+           xlink:href="#aBDOeOXU2"
+           opacity="1"
+           fill="#b11c3e"
+           fill-opacity="1"
+           id="use5893" />
+      </g>
+      <g
+         id="g5901">
+        <g
+           id="g5899">
+          <use
+             xlink:href="#aN11dLuCs"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#892b2b"
+             stroke-width="2"
+             stroke-opacity="1"
+             id="use5897" />
+        </g>
+      </g>
+      <g
+         id="g5907">
+        <g
+           id="g5905">
+          <use
+             xlink:href="#b3DD9251W4"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#2db335"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use5903" />
+        </g>
+      </g>
+      <g
+         id="g5915">
+        <use
+           xlink:href="#btN5oA17T"
+           opacity="1"
+           fill="#e7e4db"
+           fill-opacity="1"
+           id="use5909" />
+        <g
+           id="g5913">
+          <use
+             xlink:href="#btN5oA17T"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#cbb18a"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use5911" />
+        </g>
+      </g>
+      <g
+         id="g5923">
+        <use
+           xlink:href="#fqMTu4IBs"
+           opacity="1"
+           fill="#e7e4db"
+           fill-opacity="1"
+           id="use5917" />
+        <g
+           id="g5921">
+          <use
+             xlink:href="#fqMTu4IBs"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#cbb18a"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use5919" />
+        </g>
+      </g>
+      <g
+         id="g5929">
+        <g
+           id="g5927">
+          <use
+             xlink:href="#b4Mo70oDWP"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#cbb18a"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use5925" />
+        </g>
+      </g>
+      <g
+         id="g5935">
+        <g
+           id="g5933">
+          <use
+             xlink:href="#a1dXA1cSkf"
+             opacity="1"
+             fill-opacity="0"
+             stroke="#cbb18a"
+             stroke-width="1"
+             stroke-opacity="1"
+             id="use5931" />
+        </g>
+      </g>
+    </g>
+  </g>
+  <path
+     style="fill:none;stroke:#cccccc;stroke-width:1.35447443;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="m 5.1119162,8.1068355 c 2.8277763,-0.9764227 5.7895128,-1.1933542 8.9999998,0"
+     id="path5949"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cc" />
+  <path
+     style="fill:none;stroke:#cccccc;stroke-width:1.35447443;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="m 5.111916,11.888419 c 2.8277764,-0.976423 5.789513,-1.193354 9,0"
+     id="path5949-3"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cc" />
+  <path
+     style="fill:none;stroke:#cccccc;stroke-width:1.35447443;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="m 5.1119161,15.670003 c 2.8277763,-0.976423 5.7895129,-1.193354 8.9999999,0"
+     id="path5949-5"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cc" />
+</svg>
