@@ -1,0 +1,35 @@
+{
+    "extensionDescription": {
+        "message": "Add-on for quick bookmarking",
+        "description": "Description of the extension"
+    },
+    "notificationContent": {
+        "message": "You clicked $URL$.",
+        "description": "Tells the user which link they clicked.",
+        "placeholders": {
+            "url" : {
+                "content" : "$1",
+                "example" : "https://developer.mozilla.org"
+            }
+        }
+    },
+
+    "options.folder.name":                      { "message": "Name of the folder to use as bookmarks storage:" },
+    "options.view.mode":                        { "message": "View mode:" },
+    "options.view.mode.compact":                { "message": "compact" },
+    "options.view.mode.full":                   { "message": "full" },
+    "options.sort.by":                          { "message": "Sort by:" },
+    "options.sort.by.dateAdded":                { "message": "time" },
+    "options.sort.by.title":                    { "message": "title" },
+    "options.sort.ascending":                   { "message": "ascending" },
+    "options.browserAction.action":             { "message": "Click on button opens:" },
+    "options.browserAction.action.sidebar":     { "message": "sidebar" },
+    "options.browserAction.action.popup":       { "message": "popup" },
+    "options.view.tooltip":                     { "message": "Show tooltips" },
+    "options.view.fullurl":                     { "message": "Show full url" },
+    "options.bookmark.click.left.remove":       { "message": "Remove bookmark on read" },
+    "options.bookmark.click.left.closePopup":   { "message": "Close popup on open bookmark" },
+    "options.pageAction.close":                 { "message": "Close tab on save" },
+    "bookmark.remove":                          { "message": "remove" },
+    "bookmark.restore":                         { "message": "restore" }
+}

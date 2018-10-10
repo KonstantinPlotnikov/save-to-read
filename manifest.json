@@ -1,0 +1,59 @@
+{
+
+    "applications": {
+        "gecko": {
+            "id": "save2read@konstantin.plotnikov"
+        }
+    },
+
+    "description": "__MSG_extensionDescription__",
+    "manifest_version": 2,
+    "name": "Save-To-Read",
+    "version": "1.0",
+    "homepage_url": "https://addons.mozilla.org/firefox/addon/161878/",
+    "icons": {
+        "32": "icons/save2read.png"
+    },
+
+    "permissions": [
+        "bookmarks",
+        "tabs",
+        "activeTab",
+        "storage"
+    ],
+
+    "sidebar_action": {
+        "default_title": "Save-To-Read",
+        "default_icon": "icons/save2read.png",
+        "default_panel": "src/sidebar.html"
+    },
+
+    "browser_action": {
+        "default_icon": "icons/save2read.png",
+        "default_title": "Open sidebar",
+        "default_popup": "src/popup.html"
+    },
+
+    "page_action": {
+        "browser_style": true,
+        "default_icon": "icons/add.png",
+        "default_title": "Toogle page save-to-read status",
+        "show_matches": ["http://*/", "https://*/"]
+    },
+
+    "background": {
+        "scripts": [
+            "src/i18n.js",
+            "src/signal.js",
+            "src/options.js",
+            "src/bookmarks.js",
+            "src/background.js"
+        ]
+    },
+
+    "options_ui": {
+        "page": "src/options-ui.html"
+    },
+
+    "default_locale": "en"
+}

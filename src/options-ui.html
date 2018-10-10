@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <!-- <link rel="stylesheet" href="../3rd-party/pretty-checkbox.min.css"> -->
+    <script src="i18n.js"></script>
+    <script src="signal.js"></script>
+    <script src="options.js"></script>
+    <script src="../3rd-party/jquery-3.3.1.slim.min.js"></script>
+</head>
+<body>
+
+    <div class="options-block">
+    <div class="option">
+        <label class="option-text-label" data-localization-key="options.folder.name"></label>
+        <input class="option-text" type="text" id="folder.name" placeholder="Save-To-Read">
+        <!-- <label class="option-folder-id"></label> -->
+    </div>
+
+    <div class="option" style="display:block;">
+        <span data-localization-key="options.view.mode"></span>
+        <input class="option-radio" type="radio" name="view.mode" id="view.mode.compact" value="compact">
+        <label class="option-radio-label" for="view.mode.compact" data-localization-key="options.view.mode.compact"></label>
+        <input class="option-radio" type="radio" name="view.mode" id="view.mode.full" value="full">
+        <label class="option-radio-label" for="view.mode.full" data-localization-key="options.view.mode.full"></label>
+    </div>
+    <div class="option">
+        <span data-localization-key="options.sort.by"></span>
+        <input class="option-radio" type="radio" name="sort.by" id="sort.by.dateAdded" value="dateAdded">
+        <label class="option-radio-label" for="sort.by.dateAdded" data-localization-key="options.sort.by.dateAdded"></label>
+        <input class="option-radio" type="radio" name="sort.by" id="sort.by.title" value="title">
+        <label class="option-radio-label" for="sort.by.title" data-localization-key="options.sort.by.title"></label>
+    </div>
+    <div class="option">
+        <input class="option-checkbox" type="checkbox" id="sort.ascending">
+        <label class="option-checkbox-label" for="sort.ascending" data-localization-key="options.sort.ascending"></label>
+    </div>
+    <div style="display:none;">
+    <div class="option">
+        <span data-localization-key="options.browserAction.action"></span>
+        <input class="option-radio" type="radio" name="browserAction.action" id="browserAction.action.sidebar" value="sidebar">
+        <label class="option-radio-label" for="browserAction.action.sidebar" data-localization-key="options.browserAction.action.sidebar"></label>
+        <input class="option-radio" type="radio" name="browserAction.action" id="browserAction.action.popup" value="popup">
+        <label class="option-radio-label" for="browserAction.action.popup" data-localization-key="options.browserAction.action.popup"></label>
+        <!-- <input class="option-radio" type="radio" name="browserAction.action" id="browserAction.action.time" value="time"> -->
+        <!-- <label class="option-radio-label" for="browserAction.action.time" data-localization-key="options.browserAction.action.time"></label>  -->
+        <!-- <input class="option-radio" type="radio" name="browserAction.action" id="browserAction.action.title" value="title"> -->
+        <!-- <label class="option-radio-label" for="browserAction.action.title" data-localization-key="options.browserAction.action.title"></label>  -->
+    </div>
+    <div class="option">
+        <input class="option-checkbox" type="checkbox" id="view.tooltip">
+        <label class="option-checkbox-label" for="view.tooltip" data-localization-key="options.view.tooltip"></label>
+    </div>
+    <div class="option">
+        <input class="option-checkbox" type="checkbox" id="view.fullurl">
+        <label class="option-checkbox-label" for="view.fullurl" data-localization-key="options.view.fullurl"></label>
+    </div>
+    <div class="option">
+        <input class="option-checkbox" type="checkbox" id="bookmark.click.left.remove">
+        <label class="option-checkbox-label" for="bookmark.click.left.remove" data-localization-key="options.bookmark.click.left.remove"></label>
+    </div>
+    <div class="option">
+        <input class="option-checkbox" type="checkbox" id="bookmark.click.left.closePopup">
+        <label class="option-checkbox-label" for="bookmark.click.left.closePopup" data-localization-key="options.bookmark.click.left.closePopup"></label>
+    </div>
+    <div class="option">
+        <input class="option-checkbox" type="checkbox" id="pageAction.close">
+        <label class="option-checkbox-label" for="pageAction.close" data-localization-key="options.pageAction.close"></label>
+    </div>
+    </div>
+
+    <!-- 'shortcut.bookmark' 'ALT + W' -->
+    <!-- 'shortcut.sidebar'  'ALT + [' -->
+    <!-- 'shortcut.popup'    'ALT + ]' -->
+    <!-- 'shortcut.open'     'ALT + O' -->
+
+    <script src="options-ui.js"></script>
+
+    <!-- <h1>Hello from ag-grid!</h1> -->
+    <!-- <div id="myGrid" style="height: 600px;width:500px;" class="ag-theme-balham"></div> -->
+    <!-- <script src="options-ui.js"></script> -->
+    </div>
+</body>
+</html>

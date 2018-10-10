@@ -1,0 +1,33 @@
+{
+    "extensionDescription": {
+        "message": "Дополнение для быстрого управления закладками",
+        "description": "Description of the extension"
+    },
+
+    "notificationContent": {
+        "message": "You clicked $URL$.",
+        "description": "Tells the user which link they clicked.",
+        "placeholders": {
+            "url" : {
+                "content" : "$1",
+                "example" : "https://developer.mozilla.org"
+            }
+        }
+    },
+
+    "options.view.mode":                        { "message": "Вид списка закладок:" },
+    "options.view.mode.compact":                { "message": "компактный" },
+    "options.view.mode.full":                   { "message": "полный" },
+    "options.sort.by":                          { "message": "Сортировать по:" },
+    "options.sort.by.dateAdded":                { "message": "времени" },
+    "options.sort.by.title":                    { "message": "имени" },
+    "options.sort.ascending":                   { "message": "По возрастанию" },
+    "options.browserAction.action":             { "message": "Открывать по клику на кнопку дополнения:" },
+    "options.browserAction.action.sidebar":     { "message": "боковую панель" },
+    "options.browserAction.action.popup":       { "message": "всплывающее окно" },
+    "options.view.tooltip":                     { "message": "Показывать всплывающие пометки" },
+    "options.view.fullurl":                     { "message": "Показывать полные пути" },
+    "options.bookmark.click.left.remove":       { "message": "Удалять закладки при их открытии" },
+    "options.bookmark.click.left.closePopup":   { "message": "Закрывать всплывающее окно при открытии закладки" },
+    "options.pageAction.close":                 { "message": "Закрывать вкладку при сохранении" }
+}
