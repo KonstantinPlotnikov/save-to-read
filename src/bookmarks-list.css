@@ -1,0 +1,86 @@
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+body {
+}
+
+.s2r-table {
+    display: table;
+    table-layout: fixed;
+    font-family: sans-serif;
+    padding: 4px 0px;
+}
+
+.row {
+    display: table-row;
+}
+.cell {
+    vertical-align: top;
+    display: table-cell;
+}
+.title-cell {
+    padding: 4px 4px;
+}
+.age-cell {
+    width: 60px;
+    padding: 4px 4px;
+}
+
+.title {
+    width: 100%;
+}
+
+.title-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    /* width: 100%; */
+    cursor: pointer;
+}
+
+.url-label {
+    font-size: 8pt;
+    font-weight: 600;
+    color: gray;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    /* width: 100%; */
+    cursor: pointer;
+}
+
+.compact-mode .url-label {
+    display: none;
+}
+
+.age-label {
+    display: block;
+    /* margin-left: 7px; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    text-align: right;
+}
+
+.remove-mode:hover .age-label , .restore-mode .age-label {
+    display: none;
+}
+
+.restore-mode .age-label {
+    text-decoration: line-through;
+}
+
+.remove-mode:hover .remove-btn {
+    display: block;
+}
+
+.restore-mode .restore-btn {
+    display: block;
+}
+
+.remove-btn , .restore-btn {
+    display: none;
+    margin-left: auto;
+    cursor: pointer;
+}

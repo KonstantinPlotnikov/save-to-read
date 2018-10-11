@@ -2,16 +2,21 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script src="../3rd-party/ag-grid-community.min.noStyle.js"></script>
-    <link rel="stylesheet" href="../3rd-party/ag-grid.css">
-    <link rel="stylesheet" href="grid.css">
+    <script src="table.js"></script>
+    <link rel="stylesheet" href="bookmarks-list.css">
     <script src="i18n.js"></script>
     <script src="signal.js"></script>
     <script src="options.js"></script>
     <script src="bookmarks.js"></script>
 </head>
-<body>
-    <div id="s2r" class="s2r-grid" style="height:400pt; width:300pt;"></div>
-    <script src="grid.js"></script>
+<body style="height:30em; width:20em;">
+    <div id="s2r" class="s2r-table" style="width:19em;"></div>
+    <template id="row-template">
+        <div class="row">
+            <div class="title-cell cell"><div class="title-label"></div><div class="url-label"></div></div>
+            <div class="age-cell cell"><img class="remove-btn" src="/icons/remove.png"></img><img class="restore-btn" src="/icons/add.png"></img><div class="age-label"></div></div>
+        </div>
+    </template>
+    <script src="bookmarks-list.js"></script>
 </body>
 </html>
