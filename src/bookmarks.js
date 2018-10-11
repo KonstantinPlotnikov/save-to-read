@@ -18,7 +18,7 @@ var bookmarks = new (function() {
                             return child;
                         }
                     }
-                    return browser.bookmarks.create({ title: name, parentId: parent.id, type: 'folder'})
+                    return browser.bookmarks.create({ title: name, parentId: parent.id})
                                .then((folder) => {
                                    options.set('folder.id', folder.id);
                                    console.log('created folder with id = ' + folder.id);
