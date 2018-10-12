@@ -1,41 +1,39 @@
 html, body {
     max-width: 100%;
     overflow-x: hidden;
-}
-body {
+    padding: 3px;
 }
 
 .s2r-table {
-    display: table;
-    table-layout: fixed;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 8px;
+    width: 100%;
     font-family: sans-serif;
-    padding: 4px 0px;
 }
 
 .row {
-    display: table-row;
+    display: contents;
 }
+
 .cell {
-    vertical-align: top;
-    display: table-cell;
+    overflow: hidden;
+    margin: 4px 0px;
 }
+
 .title-cell {
-    padding: 4px 4px;
 }
+
 .age-cell {
-    width: 60px;
-    padding: 4px 4px;
 }
 
 .title {
-    width: 100%;
 }
 
 .title-label {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    /* width: 100%; */
     cursor: pointer;
 }
 
@@ -46,7 +44,6 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    /* width: 100%; */
     cursor: pointer;
 }
 
@@ -56,10 +53,6 @@ body {
 
 .age-label {
     display: block;
-    /* margin-left: 7px; */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 100%;
     text-align: right;
 }
 
