@@ -12,8 +12,8 @@ body {
 .filter-sort {
     display: grid;
     grid-template-columns: auto max-content;
-    margin-bottom: 10px;
-    width: 100%;
+    padding: 5px;
+    max-width: 100%;
 }
 
 .filter {
