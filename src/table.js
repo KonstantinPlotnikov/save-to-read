@@ -1,9 +1,11 @@
 function Table(element, options) {
     let Renderer = options.renderer;
-    let nodes = [];
+    let allNodes = [];
+    let filteredNodes = [];
     let nodesMap = new Map();
     let getKey = options.getKey ? options.getKey : ((data) => { return data; }) ;
-    this.compare = options.compare;
+    let compareFunc = options.compare;
+    let filterFunc = options.filter;
 
     this.addRows = function (rowsData) {
         for (let rowData of rowsData) {
@@ -11,20 +13,29 @@ function Table(element, options) {
             node.data = rowData;
             node.renderer = new Renderer(rowData);
             node.ui = node.renderer.getUi();
-            nodes.push(node);
+            allNodes.push(node);
             nodesMap[getKey(node.data)] = node;
-            element.appendChild(node.ui);
+            // element.appendChild(node.ui);
         }
         this.sort();
     }
 
     this.sort = function() {
-        if (!this.compare || nodes.length < 2) {
-            return;
+        if (compareFunc && allNodes.length >= 2) {
+            allNodes.sort((e1, e2) => { return compareFunc(e1.data, e2.data); });
         }
-        nodes.sort((e1, e2) => { return this.compare(e1.data, e2.data); });
-        for (let i = nodes.length-2; i >= 0; --i) {
-            element.insertBefore(nodes[i].ui, nodes[i+1].ui);
+
+        this.filter();
+    }
+
+    this.filter = function () {
+        filteredNodes = allNodes.filter((e) => { return filterFunc ? filterFunc(e.data) : true; });
+
+        while (element.firstChild) {
+            element.removeChild(element.firstChild);
+        }
+        for (let node of filteredNodes) {
+            element.appendChild(node.ui);
         }
     }
 
@@ -35,23 +46,25 @@ function Table(element, options) {
         }
         node.renderer.destroy();
         element.removeChild(node.ui);
-        for (let i = 0, length = nodes.length; i < length; ++i) {
-            if (nodes[i] === node) {
-                nodes.splice(i, 1);
+        for (let i = 0, length = allNodes.length; i < length; ++i) {
+            if (allNodes[i] === node) {
+                allNodes.splice(i, 1);
                 break;
             }
         }
         nodesMap.delete(key);
+        this.filter();
     }
 
     this.clear = function() {
-        for (let node of nodes) {
+        for (let node of allNodes) {
             node.renderer.destroy();
         }
-        for (let child of element.children) {
-            element.removeChild(child);
+        while (element.firstChild) {
+            element.removeChild(element.firstChild);
         }
         nodesMap.clear();
-        nodes = [];
+        allNodes = [];
+        filteredNodes = [];
     }
 }

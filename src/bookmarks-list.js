@@ -1,23 +1,29 @@
+let tableElement = document.getElementById('s2r');
+let filterElement = document.getElementById('filter');
+
 bookmarks.onFolderChanged.addListener(onFolderChanged);
 bookmarks.onBookmarksChanged.addListener(onBookmarksChanged);
 options.sort.by.onChanged.addListener(onSortingChanged);
 options.sort.ascending.onChanged.addListener(onSortingChanged);
 options.view.mode.onChanged.addListener(onViewModeChanged);
-document.querySelector('body').oncontextmenu = () => { return false; };
+document.body.oncontextmenu = () => { return false; };
+filterElement.addEventListener('input', onFilterChange);
 
 const REMOVE_DELAY = 3000;
 let idsToRemove = {};
 let compactMode = true;
 let sort = { byTitle : false, order: 1 };
+let filterString = '';
 
-// create the grid passing in the div to use together with the columns & data we want to use
-let tableElement = document.getElementById('s2r');
 let tableOptions = {
     renderer: renderRow,
     getKey: (data) => { return data.id; },
-    compare: compareBookmarks
+    compare: compareBookmarks,
+    filter: filterBookmarks
 }
 let table = new Table(tableElement, tableOptions);
+
+filterElement.placeholder = tr('list.filter');
 
 onFolderChanged();
 onSortingChanged();
@@ -26,16 +32,23 @@ onViewModeChanged();
 // --------------------------------------------------------------------------
 // FUNCTIONS
 
-function compareBookmarks(b1, b2)
+function compareBookmarks(data1, data2)
 {
-    let title = b1.title.localeCompare(b2.title);
-    let age = b2.dateAdded - b1.dateAdded;
+    let title = data1.title.localeCompare(data2.title);
+    let age = data2.dateAdded - data1.dateAdded;
     if (sort.byTitle) {
         return (title == 0) ? age : (title * sort.order);
     }
     else {
         return (age == 0) ? title : (age * sort.order)
     }
+}
+
+function filterBookmarks(data) {
+    if (filterString.length === 0) {
+        return true;
+    }
+    return data.title.toLowerCase().includes(filterString) || data.url.toLowerCase().includes(filterString);
 }
 
 function onSortingChanged() {
@@ -46,6 +59,11 @@ function onSortingChanged() {
             sort.order = results[1] ? 1 : -1;
             table.sort();
         })
+}
+
+function onFilterChange (event) {
+    filterString = filterElement.value.toLowerCase();
+    table.filter();
 }
 
 function onFolderChanged() {
@@ -178,8 +196,6 @@ function renderRow(data) {
         title.textContent = data.title;
         url.textContent = data.url;
         age.textContent = daysString;
-        remover.textContent = tr('bookmark.remove');
-        restorer.textContent = tr('bookmark.restore');
 
         updateMode();
     }
@@ -202,118 +218,3 @@ function renderRow(data) {
 
     this.update();
 }
-
-
-// function renderTitle () {}
-//
-// renderTitle.prototype.init = function(params) {
-//     this.gui = document.createElement('div');
-//     this.gui.innerHTML = '<div class="title-label"></div><div class="url-label"></div>';
-//
-//     this.title = this.gui.querySelector('.title-label');
-//     this.url = this.gui.querySelector('.url-label');
-//
-//     this.gui.style.width = '100%';
-//
-//     this.refresh(params);
-//
-//     this.eventListener = (event) => {
-//         switch (event.button) {
-//             case 0: // left
-//                 browser.tabs.query({active: true, currentWindow: true})
-//                     .then((tabs) => {
-//                         let tab = tabs[0];
-//                         browser.tabs.update(tab.id, { url: params.node.data.url });
-//                     });
-//                 break;
-//             case 1: // middle
-//                 browser.tabs.create({ url: params.node.data.url }).catch((err)=>{console.error(err);});
-//                 break;
-//             case 2: // right
-//                 event.preventDefault();
-//                 event.stopImmediatePropagation();
-//                 break;
-//             default:
-//                 console.error('unknown mouse event');
-//                 break;
-//         }
-//     };
-//     this.gui.addEventListener('click', this.eventListener);
-//     this.gui.addEventListener('auxclick', this.eventListener);
-//     this.gui.addEventListener('mouseenter', ()=>{
-//         console.log('pe');
-//         window.status = "string";
-//         console.log('ep');
-//     });
-// };
-//
-// renderTitle.prototype.getGui = function() {
-//     return this.gui;
-// };
-//
-// renderTitle.prototype.refresh = function(params) {
-//     this.title.innerHTML = params.node.data.title;
-//     this.url.innerHTML = params.node.data.url;
-//     return true;
-// };
-//
-// renderTitle.prototype.destroy = function() {
-//     this.gui.removeEventListener('click', this.eventListener);
-//     this.gui.removeEventListener('auxclick', this.eventListener);
-// };
-//
-// function renderAge () {}
-//
-// renderAge.prototype.init = function(params) {
-//     this.gui = document.createElement('div');
-//     this.gui.innerHTML = '<div class="age-label"></div><img class="remove-btn" src="/icons/remove.png"></img><img class="restore-btn" src="/icons/add.png"></img>';
-//
-//     this.gui.classList.add('remove-restore');
-//     this.age = this.gui.querySelector('.age-label');
-//     this.remover = this.gui.querySelector('.remove-btn');
-//     this.restorer = this.gui.querySelector('.restore-btn');
-//     // this.clicker = this.gui.querySelector('.remove-restore');
-//
-//     this.remover.innerHTML = tr('bookmark.remove');
-//     this.restorer.innerHTML = tr('bookmark.restore');
-//
-//     this.refresh(params);
-//
-//     this.eventListener = () => {
-//         if (params.node.data.id in idsToRemove) {
-//             delete idsToRemove[params.node.data.id];
-//         }
-//         else {
-//             let now = new Date().getTime();
-//             idsToRemove[params.node.data.id] = now;
-//             setTimeout(removeBookmarks, REMOVE_DELAY + 100/*milliseconds*/);
-//         }
-//         this.refresh(params);
-//     };
-//     this.gui.addEventListener('click', this.eventListener);
-// };
-//
-// renderAge.prototype.getGui = function() {
-//     return this.gui;
-// };
-//
-// renderAge.prototype.refresh = function(params) {
-//     let dateAdded = params.value;
-//     let now = new Date().getTime();
-//     let days = Math.round((now -  dateAdded) / 86400000); //86400000 - number of milliseconds in the twenty-four hours
-//     let daysString = (days == 0) ? "today" : (days + " days");
-//     this.age.innerHTML = daysString;
-//     if (params.node.data.id in idsToRemove) {
-//         this.gui.classList.remove('remove-mode');
-//         this.gui.classList.add('restore-mode');
-//     }
-//     else {
-//         this.gui.classList.add('remove-mode');
-//         this.gui.classList.remove('restore-mode');
-//     }
-//     return true;
-// };
-//
-// renderAge.prototype.destroy = function() {
-//     this.gui.removeEventListener('click', this.eventListener);
-// };

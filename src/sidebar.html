@@ -10,7 +10,12 @@
     <script src="bookmarks.js"></script>
 </head>
 <body>
-    <div id="s2r" class="s2r-table" style="width:100%;"></div>
+    <div class="filter-block">
+        <input id="filter" type="search" class="filter"></input>
+    </div>
+    <div class="s2r-table-container">
+        <div id="s2r" class="s2r-table"></div>
+    <div>
     <template id="row-template">
         <div class="row">
             <div class="title-cell cell"><div class="title-label"></div><div class="url-label"></div></div>
