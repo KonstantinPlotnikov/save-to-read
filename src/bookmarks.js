@@ -104,9 +104,9 @@ var bookmarks = new (function() {
                    .then((results) => {
                        let folderId = results[0];
                        let bookmarks = results[1];
-                       for (let index in bookmarks) {
-                           if (bookmarks[index].parentId == folderId) {
-                               return bookmarks[index].id;
+                       for (let bookmark of bookmarks) {
+                           if (bookmark.parentId == folderId) {
+                               return bookmark.id;
                            }
                        }
                        return null;

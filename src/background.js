@@ -64,8 +64,7 @@ function onTabUpdated(tabId, changeInfo, tab) {
 function onBookmarkChanged(details) {
     browser.tabs.query({})
         .then((tabs) => {
-            for (let index in tabs) {
-                let tab = tabs[index];
+            for (let tab of tabs) {
                 if (!checkTab(tab)) {
                     continue;
                 }

@@ -97,11 +97,11 @@ let options = new (function() {
         let obj = this;
         path.shift();
         let name = path.pop();
-        for (let i in path) {
-            if (!obj[path[i]]) {
-                obj[path[i]] = {};
+        for (let part of path) {
+            if (!obj[part]) {
+                obj[part] = {};
             }
-            obj = obj[path[i]];
+            obj = obj[part];
         }
         obj[name] = new Option(path.join('.') + '.' + name);
     }
