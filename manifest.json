@@ -2,7 +2,8 @@
 
     "applications": {
         "gecko": {
-            "id": "save2read@konstantin.plotnikov"
+            "id": "save2read@konstantin.plotnikov",
+            "strict_min_version": "56.0"
         }
     },
 
