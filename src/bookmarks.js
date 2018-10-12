@@ -123,6 +123,9 @@ var bookmarks = new (function() {
     }
 
     let sendBookmarkChangeNotification = (bookmark, exists) => {
+        if (('type' in bookmark && bookmark.type != "bookmark") || !bookmark.url) {
+            return;
+        }
         this.onBookmarksChanged.execute({
             exists: exists,
             id: bookmark.id,
