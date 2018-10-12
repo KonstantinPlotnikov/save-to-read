@@ -9,13 +9,18 @@ body {
     flex-flow: column;
 }
 
-.filter-block {
+.filter-sort {
+    display: grid;
+    grid-template-columns: auto max-content;
     margin-bottom: 10px;
     width: 100%;
 }
 
 .filter {
-    width: 100%;
+}
+
+.sort {
+    margin-left: 10px;
 }
 
 .s2r-table-container {

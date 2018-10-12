@@ -15,6 +15,7 @@
         }
     },
 
+    "options.folder.name":                      { "message": "Имя папки с закладками:" },
     "options.view.mode":                        { "message": "Вид списка закладок:" },
     "options.view.mode.compact":                { "message": "компактный" },
     "options.view.mode.full":                   { "message": "полный" },
@@ -22,6 +23,9 @@
     "options.sort.by.dateAdded":                { "message": "времени" },
     "options.sort.by.title":                    { "message": "имени" },
     "options.sort.ascending":                   { "message": "По возрастанию" },
+    "options.sort.by.age.ascending":            { "message": "Сначала новые" },
+    "options.sort.by.age.descending":           { "message": "Сначала старые" },
+    "options.sort.by.title.ascending":          { "message": "По имени" },
     "options.browserAction.action":             { "message": "Открывать по клику на кнопку дополнения:" },
     "options.browserAction.action.sidebar":     { "message": "боковую панель" },
     "options.browserAction.action.popup":       { "message": "всплывающее окно" },
@@ -29,5 +33,10 @@
     "options.view.fullurl":                     { "message": "Показывать полные пути" },
     "options.bookmark.click.left.remove":       { "message": "Удалять закладки при их открытии" },
     "options.bookmark.click.left.closePopup":   { "message": "Закрывать всплывающее окно при открытии закладки" },
-    "options.pageAction.close":                 { "message": "Закрывать вкладку при сохранении" }
+    "options.pageAction.close":                 { "message": "Закрыть вкладку при сохранении" },
+    "bookmark.remove":                          { "message": "удалить" },
+    "bookmark.restore":                         { "message": "восстановить" },
+    "list.filter":                              { "message": "Фильтр..." },
+    "page.add_bookmark":                        { "message": "Сохранить в Save-To-Read" },
+    "page.remove_bookmark":                     { "message": "Удалить из Save-To-Read" }
 }

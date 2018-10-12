@@ -3,6 +3,7 @@
         "message": "Add-on for quick bookmarking",
         "description": "Description of the extension"
     },
+
     "notificationContent": {
         "message": "You clicked $URL$.",
         "description": "Tells the user which link they clicked.",
@@ -22,6 +23,9 @@
     "options.sort.by.dateAdded":                { "message": "time" },
     "options.sort.by.title":                    { "message": "title" },
     "options.sort.ascending":                   { "message": "ascending" },
+    "options.sort.by.age.ascending":            { "message": "Newest first" },
+    "options.sort.by.age.descending":           { "message": "Oldest first" },
+    "options.sort.by.title.ascending":          { "message": "By title" },
     "options.browserAction.action":             { "message": "Click on button opens:" },
     "options.browserAction.action.sidebar":     { "message": "sidebar" },
     "options.browserAction.action.popup":       { "message": "popup" },
@@ -31,5 +35,8 @@
     "options.bookmark.click.left.closePopup":   { "message": "Close popup on open bookmark" },
     "options.pageAction.close":                 { "message": "Close tab on save" },
     "bookmark.remove":                          { "message": "remove" },
-    "bookmark.restore":                         { "message": "restore" }
+    "bookmark.restore":                         { "message": "restore" },
+    "list.filter":                              { "message": "Filter by..." },
+    "page.add_bookmark":                        { "message": "Save bookmark" },
+    "page.remove_bookmark":                     { "message": "Remove bookmark" }
 }

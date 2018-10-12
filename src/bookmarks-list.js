@@ -1,5 +1,6 @@
 let tableElement = document.getElementById('s2r');
 let filterElement = document.getElementById('filter');
+let sortElement = document.getElementById('sort');
 
 bookmarks.onFolderChanged.addListener(onFolderChanged);
 bookmarks.onBookmarksChanged.addListener(onBookmarksChanged);
@@ -8,6 +9,12 @@ options.sort.ascending.onChanged.addListener(onSortingChanged);
 options.view.mode.onChanged.addListener(onViewModeChanged);
 document.body.oncontextmenu = () => { return false; };
 filterElement.addEventListener('input', onFilterChange);
+sortElement.addEventListener('change', onSortSelectionChange);
+
+filterElement.placeholder = tr('list.filter');
+document.querySelectorAll('[data-localization-key]').forEach((el) => {
+    el.textContent = tr(el.getAttribute('data-localization-key'));
+})
 
 const REMOVE_DELAY = 3000;
 let idsToRemove = {};
@@ -23,14 +30,30 @@ let tableOptions = {
 }
 let table = new Table(tableElement, tableOptions);
 
-filterElement.placeholder = tr('list.filter');
-
 onFolderChanged();
 onSortingChanged();
 onViewModeChanged();
 
 // --------------------------------------------------------------------------
 // FUNCTIONS
+
+function onSortSelectionChange(ev) {
+    switch (sortElement.value) {
+        case 'title.asc':
+            options.sort.by.set('title');
+            options.sort.ascending.set(true);
+            break;
+        case 'dateAdded.desc':
+            options.sort.by.set('dateAdded');
+            options.sort.ascending.set(false);
+            break;
+        case 'dateAdded.asc':
+        default:
+            options.sort.by.set('dateAdded');
+            options.sort.ascending.set(true);
+            break;
+    }
+}
 
 function compareBookmarks(data1, data2)
 {
@@ -55,8 +78,11 @@ function onSortingChanged() {
     Promise.all([options.sort.by.get(),
                  options.sort.ascending.get()])
         .then((results) => {
-            sort.byTitle = results[0] == 'title';
-            sort.order = results[1] ? 1 : -1;
+            let by = results[0];
+            let asc = results[1];
+            sortElement.value = by + '.' + (asc ? 'asc' : 'desc');
+            sort.byTitle = by == 'title';
+            sort.order = asc ? 1 : -1;
             table.sort();
         })
 }

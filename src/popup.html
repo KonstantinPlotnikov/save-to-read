@@ -10,8 +10,13 @@
     <script src="bookmarks.js"></script>
 </head>
 <body style="width:400px; height:500px;">
-    <div class="filter-block">
-        <input id="filter" type="search" class="filter"></input>
+    <div class="filter-sort">
+        <input id="filter" size="5" type="search" class="filter"></input>
+        <select id="sort" size="1" class="sort">
+            <option value="dateAdded.asc" data-localization-key="options.sort.by.age.ascending"></option>
+            <option value="dateAdded.desc" data-localization-key="options.sort.by.age.descending"></option>
+            <option value="title.asc" data-localization-key="options.sort.by.title.ascending"></option>
+        </select>
     </div>
     <div class="s2r-table-container">
         <div id="s2r" class="s2r-table"></div>

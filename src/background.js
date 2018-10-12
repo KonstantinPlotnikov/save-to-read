@@ -42,7 +42,7 @@ function toggleBookmark(tab) {
 
 function setPageAction(tabId, bookmarkExist) {
     var pa = browser.pageAction;
-    pa.setTitle({ tabId: tabId, title: tr("page.store_link") });
+    pa.setTitle({ tabId: tabId, title:  (bookmarkExist ? tr("page.remove_bookmark") : tr("page.add_bookmark")) });
     pa.setIcon({ tabId: tabId, path: (bookmarkExist ? "icons/remove.png" : "icons/add.png") });
     pa.show(tabId);
 }

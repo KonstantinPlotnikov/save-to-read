@@ -1,5 +1,5 @@
-document.querySelectorAll("[data-localization-key]").forEach((el) => {
-    el.textContent = tr(el.getAttribute("data-localization-key"));
+document.querySelectorAll('[data-localization-key]').forEach((el) => {
+    el.textContent = tr(el.getAttribute('data-localization-key'));
 })
 
 document.getElementById('folder.name').addEventListener('change', (ev) => {
