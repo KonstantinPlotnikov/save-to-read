@@ -1,35 +1,39 @@
-$("[data-localization-key]").each(function() {
-    $(this).text(tr($(this).attr("data-localization-key")));
+document.querySelectorAll("[data-localization-key]").forEach((el) => {
+    el.textContent = tr(el.getAttribute("data-localization-key"));
 })
-$('#folder\\.name').change((e) => {
+
+document.getElementById('folder.name').addEventListener('change', (ev) => {
     // console.log(e.currentTarget.id, e.currentTarget.value);
-    if (e.currentTarget.value === '') {
-        e.currentTarget.value = 'Save-To-Read';
+    if (ev.currentTarget.value === '') {
+        ev.currentTarget.value = 'Save-To-Read';
     }
-    options.set(e.currentTarget.id, e.currentTarget.value);
+    options.set(ev.currentTarget.id, ev.currentTarget.value);
+});
+options.get('folder.name')
+.then((value) => {
+    document.getElementById('folder.name').value = value;
 })
-$('#folder\\.name').each(function() {
-    options.get(this.id)
+
+document.querySelectorAll('.option-checkbox').forEach((el) => {
+    el.addEventListener('click', (ev) => {
+        options.set(el.id, el.checked);
+    })
+})
+document.querySelectorAll('.option-checkbox').forEach((el) => {
+    options.get(el.id)
         .then((value) => {
-            this.value = value;
+            el.checked = value;
         })
 })
-$('.option-checkbox').click((e) => {
-    options.set(e.currentTarget.id, e.currentTarget.checked);
+
+document.querySelectorAll('.option-radio').forEach((el) => {
+    el.addEventListener('click', (ev) => {
+        options.set(el.name, el.value);
+    })
 })
-$('.option-checkbox').each(function() {
-    options.get(this.id)
+document.querySelectorAll('.option-radio').forEach((el) => {
+    options.get(el.name)
         .then((value) => {
-            this.checked = value;
-        })
-})
-$('.option-radio').click((e) => {
-    options.set(e.currentTarget.name, e.currentTarget.value);
-    // options.set(e.currentTarget.id, e.currentTarget.checked);
-})
-$('.option-radio').each(function() {
-    options.get(this.name)
-        .then((value) => {
-            this.checked = this.value === value;
+            el.checked = el.value === value;
         })
 })
