@@ -11,7 +11,7 @@ var bookmarks = new (function() {
                     let parent = results[1][0].children[0];
                     for (let child of parent.children)
                     {
-                        if (child.type == 'folder' && child.title == name)
+                        if ((('type' in child && child.type == 'folder') || (!('type' in child) && !child.url)) && child.title == name)
                         {
                             options.set('folder.id', child.id);
                             console.log('using existing folder with id = ' + child.id);
@@ -63,7 +63,7 @@ var bookmarks = new (function() {
                     .then((nodes) => {
                         let ret = [];
                         nodes.forEach((node) => {
-                            if (node.type != "bookmark") {
+                            if (('type' in node && node.type != "bookmark") || !node.url) {
                                 return;
                             }
                             let bookmark = node;
