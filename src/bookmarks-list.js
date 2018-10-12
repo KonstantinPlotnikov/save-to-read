@@ -8,12 +8,14 @@ document.querySelector('body').oncontextmenu = () => { return false; };
 const REMOVE_DELAY = 3000;
 let idsToRemove = {};
 let compactMode = true;
+let sort = { byTitle : false, order: 1 };
 
 // create the grid passing in the div to use together with the columns & data we want to use
 let tableElement = document.getElementById('s2r');
 let tableOptions = {
     renderer: renderRow,
-    getKey: (data) => { return data.id; }
+    getKey: (data) => { return data.id; },
+    compare: compareBookmarks
 }
 let table = new Table(tableElement, tableOptions);
 
@@ -24,20 +26,25 @@ onViewModeChanged();
 // --------------------------------------------------------------------------
 // FUNCTIONS
 
+function compareBookmarks(b1, b2)
+{
+    let title = b1.title.localeCompare(b2.title);
+    let age = b2.dateAdded - b1.dateAdded;
+    if (sort.byTitle) {
+        return (title == 0) ? age : (title * sort.order);
+    }
+    else {
+        return (age == 0) ? title : (age * sort.order)
+    }
+}
+
 function onSortingChanged() {
     Promise.all([options.sort.by.get(),
                  options.sort.ascending.get()])
         .then((results) => {
-            let by = results[0];
-            let order = results[1];
-            if (by === 'title') {
-                // gridOptions.api.setSortModel([ { colId: 'title', sort: (results[1] ? 'asc' : 'desc') },
-                //                                { colId: 'dateAdded', sort: 'desc' } ]);
-            }
-            else {
-                // gridOptions.api.setSortModel([ { colId: 'dateAdded', sort: (results[1] ? 'desc' : 'asc') },
-                //                                { colId: 'title', sort: 'asc' } ]);
-            }
+            sort.byTitle = results[0] == 'title';
+            sort.order = results[1] ? 1 : -1;
+            table.sort();
         })
 }
 
