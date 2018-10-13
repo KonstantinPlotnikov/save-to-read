@@ -18,7 +18,6 @@ let options = new (function() {
     addOption('shortcut.open', 'ALT + O');
     addOption('bookmark.click.left.remove', false);
     addOption('bookmark.click.left.closePopup', false);
-    addOption('browserAction.action', 'sidebar'); // popup, read_last, read_random
     addOption('pageAction.close', false);
 
     this.set = function(name, value) {
