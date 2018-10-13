@@ -4,6 +4,7 @@ let sortElement = document.getElementById('sort');
 
 bookmarks.onFolderChanged.addListener(onFolderChanged);
 bookmarks.onBookmarksChanged.addListener(onBookmarksChanged);
+bookmarks.onDelayRemoveChanged.addListener(onDelayRemoveChanged);
 options.sort.by.onChanged.addListener(onSortingChanged);
 options.sort.ascending.onChanged.addListener(onSortingChanged);
 options.view.mode.onChanged.addListener(onViewModeChanged);
@@ -16,8 +17,6 @@ document.querySelectorAll('[data-localization-key]').forEach((el) => {
     el.textContent = tr(el.getAttribute('data-localization-key'));
 })
 
-const REMOVE_DELAY = 3000;
-let idsToRemove = {};
 let compactMode = true;
 let sort = { byTitle : false, order: 1 };
 let filterString = '';
@@ -33,6 +32,7 @@ let table = new Table(tableElement, tableOptions);
 onFolderChanged();
 onSortingChanged();
 onViewModeChanged();
+bookmarks.requestDelayRemoveList();
 
 // --------------------------------------------------------------------------
 // FUNCTIONS
@@ -95,7 +95,6 @@ function onFilterChange (event) {
 function onFolderChanged() {
     bookmarks.list()
         .then((bookmarks) => {
-            idsToRemove = {};
             table.clear();
             table.addRows(bookmarks);
         })
@@ -123,25 +122,15 @@ function onViewModeChanged()
 
 function onBookmarksChanged(details) {
     if (details.exists) {
-        if (!!idsToRemove[details.id]) delete idsToRemove[details.id]; // just in case
         table.addRows([details]);
     }
     else {
-        if (!!idsToRemove[details.id]) delete idsToRemove[details.id]; // just in case
-        let transaction = { remove: [] };
         table.removeRow(details.id);
     }
 }
 
-function removeBookmarks()
-{
-    let now = new Date().getTime();
-    for (let id in idsToRemove) {
-        if (now - idsToRemove[id] > REMOVE_DELAY/*milliseconds*/) {
-            bookmarks.removeById(id);
-            delete idsToRemove[id];
-        }
-    }
+function onDelayRemoveChanged(id, existInList) {
+    table.update([id]);
 }
 
 // --------------------------------------------------------------------------
@@ -187,7 +176,7 @@ function renderRow(data) {
     };
 
     let updateMode = function () {
-        if (data.id in idsToRemove) {
+        if (bookmarks.isOnDelayRemoveList(data.id)) {
             ui.classList.remove('remove-mode');
             ui.classList.add('restore-mode');
         }
@@ -198,15 +187,7 @@ function renderRow(data) {
     }
 
     let toggleState = function () {
-        if (data.id in idsToRemove) {
-            delete idsToRemove[data.id];
-        }
-        else {
-            let now = new Date().getTime();
-            idsToRemove[data.id] = now;
-            setTimeout(removeBookmarks, REMOVE_DELAY + 100/*milliseconds*/);
-        }
-        updateMode();
+        bookmarks.toggleDelayRemoveById(data.id);
     };
 
     this.getUi = function () {

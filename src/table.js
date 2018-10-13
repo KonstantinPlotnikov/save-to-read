@@ -14,7 +14,7 @@ function Table(element, options) {
             node.renderer = new Renderer(rowData);
             node.ui = node.renderer.getUi();
             allNodes.push(node);
-            nodesMap[getKey(node.data)] = node;
+            nodesMap.set(getKey(node.data), node);
             // element.appendChild(node.ui);
         }
         this.sort();
@@ -40,7 +40,7 @@ function Table(element, options) {
     }
 
     this.removeRow = function (key) {
-        let node = nodesMap[key];
+        let node = nodesMap.get(key);
         if (!node) {
             return; // throw?
         }
@@ -66,5 +66,13 @@ function Table(element, options) {
         nodesMap.clear();
         allNodes = [];
         filteredNodes = [];
+    }
+
+    this.update = function (list) {
+        list.forEach((id) => {
+            if (nodesMap.has(id)) {
+                nodesMap.get(id).renderer.update();
+            }
+        })
     }
 }

@@ -1,4 +1,4 @@
-bookmarks.init();
+bookmarks.setBackgroundMode();
 
 browser.pageAction.onClicked.addListener(toggleBookmark);
 

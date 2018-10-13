@@ -1,8 +1,14 @@
 var bookmarks = new (function() {
     this.onBookmarksChanged = new Signal();
     this.onFolderChanged = new Signal();
+    this.onDelayRemoveChanged = new Signal();
+    let delayRemoveList = new Map();
+    let isBackgroundMode = false;
+    const REMOVE_DELAY = 3000;
 
-    this.init = function() {
+    this.setBackgroundMode = function() {
+        isBackgroundMode = true;
+
         let selectFolder = () => {
             Promise.all([options.get('folder.name'),
                          browser.bookmarks.getTree()])
@@ -46,11 +52,6 @@ var bookmarks = new (function() {
         browser.bookmarks.onRemoved.addListener(checkChangeId);
         options.folder.name.onChanged.addListener(selectFolder);
     };
-
-// var executeAction = function (action)
-// {
-//     options.folder.id
-// };
 
     this.list = function () {
         let getBookmarks = function() {
@@ -122,6 +123,66 @@ var bookmarks = new (function() {
                    })
     }
 
+    this.requestDelayRemoveList = function () {
+        browser.runtime.sendMessage({ type: 'getDelayRemoveList' });
+    }
+
+    this.toggleDelayRemoveById = function (id) {
+        browser.runtime.sendMessage({ type: 'toggleDelayRemoveById', id: id });
+    }
+
+    this.isOnDelayRemoveList = function (id) {
+        return delayRemoveList.has(id);
+    }
+
+    browser.runtime.onMessage.addListener((message) => {
+        console.log('isBackgroundMode ' + isBackgroundMode);
+        console.log(message);
+        switch (message.type) {
+            case 'toggleDelayRemoveById':
+                if (!isBackgroundMode) {
+                    break;
+                }
+                if (this.isOnDelayRemoveList(message.id)) {
+                    delayRemoveList.delete(message.id);
+                    browser.runtime.sendMessage({ type: 'delayRemoveChanged', id: message.id, existInList: false, timeout: 0 });
+                }
+                else {
+                    let timeout = new Date().getTime() + REMOVE_DELAY;
+                    delayRemoveList.set(message.id, timeout);
+                    browser.runtime.sendMessage({ type: 'delayRemoveChanged', id: message.id, existInList: true, timeout: timeout });
+                    setTimeout(() => {
+                        let now = new Date().getTime();
+                        // TODO: seems here only one ID should be handled -> current one
+                        delayRemoveList.forEach((timeout, id) => {
+                            if (timeout < now) {
+                                bookmarks.removeById(id);
+                                delayRemoveList.delete(id);
+                            }
+                        });
+                    }, REMOVE_DELAY + 100);
+                }
+                break;
+            case 'delayRemoveChanged':
+                if (isBackgroundMode) {
+                    return;
+                }
+                if (message.existInList) {
+                    delayRemoveList.set(message.id, message.timeout);
+                }
+                else {
+                    delayRemoveList.delete(message.id);
+                }
+                this.onDelayRemoveChanged.execute(message.id, message.existInList);
+                break;
+            case 'getDelayRemoveList':
+                delayRemoveList.forEach((timeout, id) => {
+                    browser.runtime.sendMessage({ type: 'delayRemoveChanged', id: id, existInList: true, timeout: timeout });
+                })
+                break;
+        }
+    })
+
     let sendBookmarkChangeNotification = (bookmark, exists) => {
         if (('type' in bookmark && bookmark.type != "bookmark") || !bookmark.url) {
             return;
@@ -158,6 +219,7 @@ var bookmarks = new (function() {
             })
             .then((bookmarks) => {
                 let bookmark = bookmarks[0];
+                delayRemoveList.delete(bookmark.id);
                 sendBookmarkChangeNotification(bookmark, bookmark.parentId == folderId)
             })
 
@@ -167,12 +229,14 @@ var bookmarks = new (function() {
         options.get('folder.id')
             .then((folderId) => {
                 if (removeInfo.parentId == folderId) {
+                    delayRemoveList.delete(id);
                     sendBookmarkChangeNotification(removeInfo.node, false);
                 }
             });
     });
 
     options.folder.id.onChanged.addListener((change) => {
+        delayRemoveList.clear();
         this.onFolderChanged.execute(change.value);
     })
 })();
