@@ -104,5 +104,6 @@ body {
 .remove-btn , .restore-btn {
     display: none;
     margin-left: auto;
+    margin-right: auto;
     cursor: pointer;
 }
