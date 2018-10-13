@@ -1,17 +1,9 @@
 bookmarks.setBackgroundMode();
 
 browser.pageAction.onClicked.addListener(toggleBookmark);
-
-// browser.bookmarks.onCreated.addListener(onBookmarkChanged);
-// browser.bookmarks.onRemoved.addListener(updateActiveTab);
-
 browser.tabs.onUpdated.addListener(onTabUpdated);
-// browser.tabs.onActivated.addListener(updateTab);
-
 bookmarks.onBookmarksChanged.addListener(onBookmarkChanged);
 bookmarks.onFolderChanged.addListener(onFolderChanged);
-
-// browser.windows.onFocusChanged.addListener(updateActiveTab);
 
 onFolderChanged();
 
@@ -21,7 +13,7 @@ onFolderChanged();
 function checkTab(tab) {
     let validator = new RegExp('^(http:\/\/|https:\/\/|ftp:\/\/)');
     if (!validator.test(tab.url)) {
-        // browser.pageAction.hide(tab.id);
+        browser.pageAction.hide(tab.id);
         return false;
     }
     return true;
@@ -47,18 +39,22 @@ function setPageAction(tabId, bookmarkExist) {
     pa.show(tabId);
 }
 
-function onTabUpdated(tabId, changeInfo, tab) {
+function updateTab(tab) {
     if (!checkTab(tab)) {
         return;
     }
     bookmarks.exists(tab.url)
         .then((bookmarkExist) => {
-            setPageAction(tabId, bookmarkExist);
+            setPageAction(tab.id, bookmarkExist);
         })
         .catch((error) => {
-            browser.pageAction.hide(tabId);
+            browser.pageAction.hide(tab.id);
             console.error("failed to check tab existance: " + error);
         })
+}
+
+function onTabUpdated(tabId, changeInfo, tab) {
+    updateTab(tab);
 }
 
 function onBookmarkChanged(details) {
@@ -69,7 +65,7 @@ function onBookmarkChanged(details) {
                     continue;
                 }
                 if (tab.url == details.url) {
-                    setPageAction(tab.id, details.exists);
+                    updateTab(tab);
                 }
             }
         });
