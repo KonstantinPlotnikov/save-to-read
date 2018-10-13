@@ -23,7 +23,6 @@
     "options.sort.by.age.ascending":            { "message": "Сначала новые" },
     "options.sort.by.age.descending":           { "message": "Сначала старые" },
     "options.sort.by.title.ascending":          { "message": "По имени" },
-    "options.view.tooltip":                     { "message": "Показывать всплывающие пометки" },
     "options.view.fullurl":                     { "message": "Показывать полные пути" },
     "options.bookmark.click.left.remove":       { "message": "Удалять закладки при их открытии" },
     "options.bookmark.click.left.closePopup":   { "message": "Закрывать всплывающее окно при открытии закладки" },

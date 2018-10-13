@@ -23,7 +23,6 @@
     "options.sort.by.age.ascending":            { "message": "Newest first" },
     "options.sort.by.age.descending":           { "message": "Oldest first" },
     "options.sort.by.title.ascending":          { "message": "By title" },
-    "options.view.tooltip":                     { "message": "Show tooltips" },
     "options.view.fullurl":                     { "message": "Show full url" },
     "options.bookmark.click.left.remove":       { "message": "Remove bookmark on read" },
     "options.bookmark.click.left.closePopup":   { "message": "Close popup on open bookmark" },
