@@ -147,6 +147,7 @@ let newRow = (() => {
 
 function renderRow(data) {
     let ui = newRow();
+    let titleCell = ui.querySelector('.title-cell');
     let title = ui.querySelector('.title-label');
     let url = ui.querySelector('.url-label');
     let age = ui.querySelector('.age-label');
@@ -200,6 +201,7 @@ function renderRow(data) {
         let days = Math.round((now -  dateAdded) / 86400000); //86400000 - number of milliseconds in the twenty-four hours
         let daysString = (days == 0) ? "today" : (days + " days");
 
+        titleCell.setAttribute('title', data.url);
         title.textContent = data.title;
         url.textContent = data.url;
         age.textContent = daysString;
