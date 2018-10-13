@@ -14,6 +14,21 @@ options.get('folder.name')
     document.getElementById('folder.name').value = value;
 })
 
+document.querySelectorAll('.option-select').forEach((el) => {
+    el.addEventListener('change', (ev) => {
+        options.set(el.id, el.value);
+    })
+})
+document.querySelectorAll('.option-select').forEach((el) => {
+    options.get(el.id)
+        .then((value) => {
+            el.value = value;
+        })
+    options.addOptionListener(el.id, (change) => {
+        el.value = change.value;
+    })
+})
+
 document.querySelectorAll('.option-checkbox').forEach((el) => {
     el.addEventListener('click', (ev) => {
         options.set(el.id, el.checked);

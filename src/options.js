@@ -10,10 +10,8 @@ let options = new (function() {
     addOption('folder.name', 'Save-To-Read');
     addOption('folder.id', undefined);
     addOption('view.mode', 'compact'); // full
-    addOption('view.tooltip', false); // full
     addOption('view.fullurl', false);
-    addOption('sort.by', 'dateAdded');   // title
-    addOption('sort.ascending', true);
+    addOption('sort.by', 'age.asc');   // title.asc, age.desc
     addOption('shortcut.bookmark', 'ALT + W');
     addOption('shortcut.sidebar', 'ALT + [');
     addOption('shortcut.popup', 'ALT + ]');

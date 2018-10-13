@@ -6,7 +6,6 @@ bookmarks.onFolderChanged.addListener(onFolderChanged);
 bookmarks.onBookmarksChanged.addListener(onBookmarksChanged);
 bookmarks.onDelayRemoveChanged.addListener(onDelayRemoveChanged);
 options.sort.by.onChanged.addListener(onSortingChanged);
-options.sort.ascending.onChanged.addListener(onSortingChanged);
 options.view.mode.onChanged.addListener(onViewModeChanged);
 document.body.oncontextmenu = () => { return false; };
 filterElement.addEventListener('input', onFilterChange);
@@ -38,21 +37,7 @@ bookmarks.requestDelayRemoveList();
 // FUNCTIONS
 
 function onSortSelectionChange(ev) {
-    switch (sortElement.value) {
-        case 'title.asc':
-            options.sort.by.set('title');
-            options.sort.ascending.set(true);
-            break;
-        case 'dateAdded.desc':
-            options.sort.by.set('dateAdded');
-            options.sort.ascending.set(false);
-            break;
-        case 'dateAdded.asc':
-        default:
-            options.sort.by.set('dateAdded');
-            options.sort.ascending.set(true);
-            break;
-    }
+    options.sort.by.set(sortElement.value);
 }
 
 function compareBookmarks(data1, data2)
@@ -75,14 +60,24 @@ function filterBookmarks(data) {
 }
 
 function onSortingChanged() {
-    Promise.all([options.sort.by.get(),
-                 options.sort.ascending.get()])
-        .then((results) => {
-            let by = results[0];
-            let asc = results[1];
-            sortElement.value = by + '.' + (asc ? 'asc' : 'desc');
-            sort.byTitle = by == 'title';
-            sort.order = asc ? 1 : -1;
+    options.sort.by.get()
+        .then((by) => {
+            sortElement.value = by;
+            switch (by) {
+                case 'title.asc':
+                    sort.byTitle = true;
+                    sort.order = 1;
+                    break;
+                case 'age.desc':
+                    sort.byTitle = false;
+                    sort.order = -1;
+                    break;
+                case 'age.asc':
+                default:
+                    sort.byTitle = false;
+                    sort.order = 1;
+                    break;
+            }
             table.sort();
         })
 }
