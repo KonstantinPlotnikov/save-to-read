@@ -136,8 +136,6 @@ var bookmarks = new (function() {
     }
 
     browser.runtime.onMessage.addListener((message) => {
-        console.log('isBackgroundMode ' + isBackgroundMode);
-        console.log(message);
         switch (message.type) {
             case 'toggleDelayRemoveById':
                 if (!isBackgroundMode) {
