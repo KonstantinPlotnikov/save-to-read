@@ -10,21 +10,21 @@
 
     <div class="options-block">
     <div class="option">
-        <label class="option-text-label" data-localization-key="options.folder.name"></label>
+        <span class="option-text-label" data-localization-key="options.folder.name"></span>
         <input class="option-text" type="text" id="folder.name" placeholder="Save-To-Read">
         <!-- <label class="option-folder-id"></label> -->
     </div>
 
     <div class="option">
-        <span data-localization-key="options.view.mode"></span>
-        <input class="option-radio" type="radio" name="view.mode" id="view.mode.compact" value="compact">
-        <label class="option-radio-label" for="view.mode.compact" data-localization-key="options.view.mode.compact"></label>
-        <input class="option-radio" type="radio" name="view.mode" id="view.mode.full" value="full">
-        <label class="option-radio-label" for="view.mode.full" data-localization-key="options.view.mode.full"></label>
+        <span class="option-text-label" data-localization-key="options.view.mode"></span>
+        <select id="view.mode" size="1" class="option-select">
+            <option value="compact" data-localization-key="options.view.mode.compact"></option>
+            <option value="full" data-localization-key="options.view.mode.full"></option>
+        </select>
     </div>
 
     <div class="option">
-        <label class="option-text-label" data-localization-key="options.sort.by"></label>
+        <span class="option-text-label" data-localization-key="options.sort.by"></span>
         <select id="sort.by" size="1" class="option-select">
             <option value="age.asc" data-localization-key="options.sort.by.age.ascending"></option>
             <option value="age.desc" data-localization-key="options.sort.by.age.descending"></option>
@@ -32,18 +32,15 @@
         </select>
     </div>
 
-    <div style="display:none;">
     <div class="option">
-        <span data-localization-key="options.browserAction.action"></span>
-        <input class="option-radio" type="radio" name="browserAction.action" id="browserAction.action.sidebar" value="sidebar">
-        <label class="option-radio-label" for="browserAction.action.sidebar" data-localization-key="options.browserAction.action.sidebar"></label>
-        <input class="option-radio" type="radio" name="browserAction.action" id="browserAction.action.popup" value="popup">
-        <label class="option-radio-label" for="browserAction.action.popup" data-localization-key="options.browserAction.action.popup"></label>
-        <!-- <input class="option-radio" type="radio" name="browserAction.action" id="browserAction.action.time" value="time"> -->
-        <!-- <label class="option-radio-label" for="browserAction.action.time" data-localization-key="options.browserAction.action.time"></label>  -->
-        <!-- <input class="option-radio" type="radio" name="browserAction.action" id="browserAction.action.title" value="title"> -->
-        <!-- <label class="option-radio-label" for="browserAction.action.title" data-localization-key="options.browserAction.action.title"></label>  -->
+        <span class="option-text-label" data-localization-key="options.browserAction.action"></span>
+        <select id="browserAction.action" size="1" class="option-select">
+            <option value="sidebar" data-localization-key="options.browserAction.action.sidebar"></option>
+            <option value="popup" data-localization-key="options.browserAction.action.popup"></option>
+        </select>
     </div>
+
+    <div style="display:none;">
     <div class="option">
         <input class="option-checkbox" type="checkbox" id="view.fullurl">
         <label class="option-checkbox-label" for="view.fullurl" data-localization-key="options.view.fullurl"></label>
